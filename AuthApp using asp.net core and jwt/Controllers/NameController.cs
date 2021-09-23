@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace AuthApp_using_asp.net_core_and_jwt.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class NameController : ControllerBase
@@ -23,7 +25,7 @@ namespace AuthApp_using_asp.net_core_and_jwt.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "Dhaka", "Bangladesh" };
         }
 
         // GET api/<NameController>/5
@@ -33,7 +35,7 @@ namespace AuthApp_using_asp.net_core_and_jwt.Controllers
             return "value";
         }
 
-
+        [AllowAnonymous]
         [HttpPost("authenticate")]
         public IActionResult Authentication([FromBody] UserCrad userCrad)
         {
