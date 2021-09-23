@@ -16,6 +16,10 @@ namespace AuthApp_using_asp.net_core_and_jwt
         { {"test1", "password1"}, {"test2","password2"} };
         private readonly string key;
 
+        public JwtAuthenticationManager()
+        {
+        }
+
         public JwtAuthenticationManager(string key)
         {
             this.key = key;
@@ -42,6 +46,7 @@ namespace AuthApp_using_asp.net_core_and_jwt
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             tokenHandler.WriteToken(token);
+            return null;
         }
     }
 }

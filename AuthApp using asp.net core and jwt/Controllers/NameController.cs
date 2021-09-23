@@ -37,7 +37,10 @@ namespace AuthApp_using_asp.net_core_and_jwt.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authentication([FromBody] UserCrad userCrad)
         {
-            return Ok();
+            var token = jwtAuthenticationManager.Authenticate(userCrad.Username, userCrad.Password);
+                if (token == null) 
+                return Unauthorized();
+            return Ok(token);
         }
     }
 }

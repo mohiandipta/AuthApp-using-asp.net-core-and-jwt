@@ -26,6 +26,8 @@ namespace AuthApp_using_asp.net_core_and_jwt
         {
 
             services.AddControllers();
+            var key = "This is my test key";
+            services.AddSingleton<IJwtAuthenticationManager>(new JwtAuthenticationManager(key));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
