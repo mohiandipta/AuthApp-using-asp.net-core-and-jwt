@@ -12,6 +12,13 @@ namespace AuthApp_using_asp.net_core_and_jwt.Controllers
     [ApiController]
     public class NameController : ControllerBase
     {
+        private readonly IJwtAuthenticationManager jwtAuthenticationManager;
+
+        public NameController(IJwtAuthenticationManager jwtAuthenticationManager)
+        {
+            this.jwtAuthenticationManager = jwtAuthenticationManager;
+        }
+
         // GET: api/<NameController>
         [HttpGet]
         public IEnumerable<string> Get()
